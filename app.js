@@ -224,33 +224,54 @@ let scrollTriggeredReveal = false;
 
 // DOM ELEMENT REFERENCES
 const elements = {
-    body: document.body,
-    toggleBtn: document.getElementById('dimension-toggle-btn'),
-    toggleLabel: document.getElementById('toggle-label-text'),
-    portalWipe: document.getElementById('portal-wipe'),
-    logoModeIcon: document.querySelector('.logo-mode-icon'),
-    customCursor: document.getElementById('custom-cursor'),
-    customCursorDot: document.getElementById('custom-cursor-dot'),
-    tickerContent: document.getElementById('ticker-content'),
-    heroStatsPanel: document.getElementById('hero-stats-panel'),
-    skillsGrid: document.getElementById('skills-grid'),
-    projectsGrid: document.getElementById('projects-grid'),
-    experienceTimeline: document.getElementById('experience-timeline'),
-    contactForm: document.getElementById('contact-form'),
-    clickerValue: document.getElementById('clicker-value'),
-    clickerBtn: document.getElementById('clicker-btn'),
-    clickerBtnText: document.getElementById('clicker-btn-text'),
-    interactiveCanvas: document.getElementById('interactive-canvas')
+    body: null,
+    toggleBtn: null,
+    toggleLabel: null,
+    portalWipe: null,
+    logoModeIcon: null,
+    customCursor: null,
+    customCursorDot: null,
+    tickerContent: null,
+    heroStatsPanel: null,
+    skillsGrid: null,
+    projectsGrid: null,
+    experienceTimeline: null,
+    contactForm: null,
+    clickerValue: null,
+    clickerBtn: null,
+    clickerBtnText: null,
+    interactiveCanvas: null
 };
 
 // INITIALIZE APP
 window.addEventListener('DOMContentLoaded', () => {
+    // Populate elements object safely after DOM is loaded
+    elements.body = document.body;
+    elements.toggleBtn = document.getElementById('dimension-toggle-btn');
+    elements.toggleLabel = document.getElementById('toggle-label-text');
+    elements.portalWipe = document.getElementById('portal-wipe');
+    elements.logoModeIcon = document.querySelector('.logo-mode-icon');
+    elements.customCursor = document.getElementById('custom-cursor');
+    elements.customCursorDot = document.getElementById('custom-cursor-dot');
+    elements.tickerContent = document.getElementById('ticker-content');
+    elements.heroStatsPanel = document.getElementById('hero-stats-panel');
+    elements.skillsGrid = document.getElementById('skills-grid');
+    elements.projectsGrid = document.getElementById('projects-grid');
+    elements.experienceTimeline = document.getElementById('experience-timeline');
+    elements.contactForm = document.getElementById('contact-form');
+    elements.clickerValue = document.getElementById('clicker-value');
+    elements.clickerBtn = document.getElementById('clicker-btn');
+    elements.clickerBtnText = document.getElementById('clicker-btn-text');
+    elements.interactiveCanvas = document.getElementById('interactive-canvas');
+
     initCursor();
     renderThemeDependentUI();
     initThemeSwitch();
     initClickerGame();
     initInteractiveCanvas();
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
     observeElementsForAnimation();
     
     // Smooth scrolling active state
@@ -340,8 +361,10 @@ function initThemeSwitch() {
             // Re-render elements that depend on the active theme
             renderThemeDependentUI();
             
-            // Reset Lucide icons
-            lucide.createIcons();
+            // Reset Lucide icons safely
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
             
             // Reset canvas state
             resetCanvasState();
