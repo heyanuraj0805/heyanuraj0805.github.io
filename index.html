@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuraj Jangid | Portfolio Terminal</title>
+    <!-- SEO Optimization -->
+    <meta name="description" content="Portfolio of Anuraj Bhawarlal Jangid - B.Tech CSE, AI Deployment & Automation Intern. Switch between Trading and Anime themes for a fully interactive experience.">
+    <meta name="keywords" content="Anuraj Jangid, Portfolio, Software Engineer, Python, Trading Theme, Anime Theme, Web Developer, AI Intern">
+    <meta name="author" content="Anuraj Bhawarlal Jangid">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Anuraj Jangid | Portfolio Dimension">
+    <meta property="og:description" content="AI Deployment, AR Development, and Full-Stack Engineering portfolio wrapped in an interactive dual Trading/Anime experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://heyanuraj0805.github.io/">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (via CDN for lightweight SVGs) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-trading">
+    <!-- Dimension portal wipe overlay -->
+    <div id="portal-wipe" class="portal-wipe"></div>
+    
+    <!-- Custom Glowing Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+    <!-- Ticker Tape (Trading: Stocks, Anime: Chronicles/Quests) -->
+    <div class="ticker-wrap" id="header-ticker">
+        <div class="ticker" id="ticker-content">
+            <!-- Dynamic JS injected ticker text -->
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo" id="site-logo">
+                <span class="logo-symbol">ANURAJ</span>
+                <span class="logo-mode-icon">🗠</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-links">
+                <a href="#hero" class="nav-link active" data-term="nav-home">Market Overview</a>
+                <a href="#skills" class="nav-link" data-term="nav-skills">Asset Allocation</a>
+                <a href="#projects" class="nav-link" data-term="nav-projects">Active Positions</a>
+                <a href="#experience" class="nav-link" data-term="nav-experience">Trade History</a>
+                <a href="#contact" class="nav-link" data-term="nav-contact">Place Order</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme/Dimension Shift Switcher -->
+                <button class="dimension-toggle" id="dimension-toggle-btn" aria-label="Toggle Dimension">
+                    <span class="toggle-glow"></span>
+                    <span class="toggle-bg"></span>
+                    <span class="toggle-switch">
+                        <span class="toggle-icon trading-icon">🗠</span>
+                        <span class="toggle-icon anime-icon">⚔</span>
+                    </span>
+                    <span class="toggle-text" id="toggle-label-text">SHIFT DIMENSION</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="section hero-section">
+            <div class="hero-container">
+                <div class="hero-info">
+                    <div class="badge-container">
+                        <span class="status-badge pulse-element" id="hero-badge">
+                            <span class="badge-dot"></span>
+                            <span id="hero-badge-text">LIVE TRADING ACTIVE</span>
+                        </span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        <span class="greeting" id="hero-greeting">EXECUTE_INIT:</span>
+                        <span class="name">Anuraj Bhawarlal Jangid</span>
+                    </h1>
+                    
+                    <h2 class="hero-subtitle" id="hero-subtitle">
+                        AI DEPLOYMENT & AUTOMATION QUANT
+                    </h2>
+                    
+                    <p class="hero-bio" id="hero-bio">
+                        Undergraduate B.Tech CSE student (Graduating 2027). Specializing in AI-driven workflows, augmented reality, embedded systems, and robust full-stack automations. Building high-performance software at the intersection of intelligence and efficiency.
+                    </p>
+
+                    <div class="hero-stats-panel grid-stats" id="hero-stats-panel">
+                        <!-- Instantiated by JS: Stats or Level details -->
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary" id="hero-primary-btn">
+                            <i data-lucide="trending-up"></i>
+                            <span id="hero-primary-text">View Assets</span>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary" id="hero-secondary-btn">
+                            <i data-lucide="file-text"></i>
+                            <span id="hero-secondary-text">Place Contract</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Interactive Panel (Trading: Stock Chart, Anime: Stats Radar/Sigil) -->
+                <div class="hero-visual">
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <span class="visual-dot"></span>
+                            <span class="visual-dot"></span>
+                            <span class="visual-dot"></span>
+                            <span class="visual-title" id="visual-panel-title">PORTFOLIO_LIVE_FEED</span>
+                            <span class="visual-status" id="visual-panel-status">ONLINE</span>
+                        </div>
+                        <div class="visual-body">
+                            <!-- Canvas for Interactive Chart / Magic Circle -->
+                            <canvas id="interactive-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="section skills-section">
+            <div class="section-header">
+                <div class="subtitle-wrap">
+                    <span class="section-tag" id="skills-tag">ANALYSIS</span>
+                </div>
+                <h2 class="section-title" id="skills-title">Asset Allocation</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <div class="skills-container">
+                <!-- Interactive skill gauges/tree container -->
+                <div class="skills-grid" id="skills-grid">
+                    <!-- Dynamic rendering of languages, frameworks, tools based on theme -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION (HOLDINGS / QUEST BOARD) -->
+        <section id="projects" class="section projects-section">
+            <div class="section-header">
+                <div class="subtitle-wrap">
+                    <span class="section-tag" id="projects-tag">HOLDINGS</span>
+                </div>
+                <h2 class="section-title" id="projects-title">Active Positions</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <!-- Dynamic Project Cards Grid -->
+            <div class="projects-grid" id="projects-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- EXPERIENCE & ACCOLADES SECTION (HISTORY / QUEST LOG) -->
+        <section id="experience" class="section experience-section">
+            <div class="section-header">
+                <div class="subtitle-wrap">
+                    <span class="section-tag" id="experience-tag">LEDGER</span>
+                </div>
+                <h2 class="section-title" id="experience-title">Transaction History</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <div class="experience-timeline" id="experience-timeline">
+                <!-- Timeline items injected via JS -->
+            </div>
+        </section>
+
+        <!-- CONTACT & GAME WIDGET (BUY ORDER / SUMMONING) -->
+        <section id="contact" class="section contact-section">
+            <div class="section-header">
+                <div class="subtitle-wrap">
+                    <span class="section-tag" id="contact-tag">ORDER DESK</span>
+                </div>
+                <h2 class="section-title" id="contact-title">Place Order</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <div class="contact-container">
+                <!-- Left: Form -->
+                <div class="contact-card contact-form-card">
+                    <div class="contact-card-header">
+                        <span class="term-title" id="form-terminal-title">ORDER TRANSACTION SHEET</span>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name" id="label-name">Client Name</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="user"></i>
+                                    <input type="text" id="form-name" placeholder="John Doe" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email" id="label-email">Client Email Address</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="mail"></i>
+                                    <input type="email" id="form-email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject" id="label-subject">Order Scope / Subject</label>
+                            <div class="input-wrapper">
+                                <i data-lucide="briefcase"></i>
+                                <input type="text" id="form-subject" placeholder="AI Pipeline Automation Project" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message" id="label-message">Contract Details</label>
+                            <div class="input-wrapper">
+                                <textarea id="form-message" rows="5" placeholder="Specify your automated systems requirements or custom full-stack solutions..." required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-submit" id="form-submit-btn">
+                            <i data-lucide="send"></i>
+                            <span id="form-submit-text">Execute Contract</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right: Interactive Clicker Game -->
+                <div class="contact-card contact-game-card">
+                    <div class="contact-card-header">
+                        <span class="term-title" id="game-terminal-title">MARKET CAPITALIZATION TOOL</span>
+                    </div>
+                    <div class="game-body" id="game-body">
+                        <!-- Dynamic Clicker Mini-Game -->
+                        <div class="clicker-widget">
+                            <div class="clicker-display">
+                                <span class="clicker-metric-label" id="clicker-label">ANURAJ VALUATION:</span>
+                                <span class="clicker-metric-val" id="clicker-value">$1,000,000</span>
+                                <span class="clicker-sub-metric" id="clicker-sub">▲ Market Cap USD</span>
+                            </div>
+                            
+                            <div class="clicker-interactive">
+                                <button class="clicker-btn pulse-element" id="clicker-btn">
+                                    <span class="clicker-btn-inner" id="clicker-btn-text">BUY SHARES</span>
+                                </button>
+                            </div>
+
+                            <p class="clicker-instruction" id="clicker-instruction">
+                                Click the terminal button to purchase equity and increase market liquidity!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">ANURAJ BHAWARLAL JANGID</span>
+                <p class="footer-tagline" id="footer-tagline">Automating reality, one block at a time.</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="https://github.com/heyanuraj0805" target="_blank" class="social-link" aria-label="GitHub">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jangidanuraj" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="mailto:anurajjangid001@gmail.com" class="social-link" aria-label="Email">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Anuraj Bhawarlal Jangid. All Rights Reserved. Terminals Engaged.</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
