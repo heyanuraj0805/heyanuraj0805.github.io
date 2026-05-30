@@ -47,7 +47,8 @@ const PORTFOLIO_DATA = {
             desc: "Developed a real-time women’s safety backend infrastructure, building secure and low-latency API endpoints for instant communication.",
             trading: { rank: "ACTIVE POSITION", stat1_label: "PROJ ROI", stat1_val: "+380%", stat2_label: "LIQUIDITY STATUS", stat2_val: "HIGH YIELD" },
             anime: { rank: "S-RANK QUEST", stat1_label: "QUEST REWARD", stat1_val: "3,800 Gold", stat2_label: "COMPANIONS REQUIRED", stat2_val: "Solo Clear" },
-            image: "url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=500&q=80')"
+            image: "url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=500&q=80')",
+            repoUrl: "https://github.com/heyanuraj0805/SafeHer"
         },
         {
             id: "arshoe",
@@ -57,7 +58,8 @@ const PORTFOLIO_DATA = {
             desc: "Designed and developed an augmented reality interface using device cameras for accurate shoe measurement and real-time visualization customization.",
             trading: { rank: "MERGER & ACQ", stat1_label: "MARKET CAP", stat1_val: "$12.4M", stat2_label: "ASSET CLASS", stat2_val: "COMPUTER VISION" },
             anime: { rank: "SS-RANK QUEST", stat1_label: "LOOT CHANCE", stat1_val: "98% Rare Drop", stat2_label: "MANA USED", stat2_val: "420 MP" },
-            image: "url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80')"
+            image: "url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80')",
+            repoUrl: "https://github.com/heyanuraj0805/AR-Based-Shoe-Measurement-Customization"
         },
         {
             id: "expense",
@@ -67,7 +69,8 @@ const PORTFOLIO_DATA = {
             desc: "Created a desktop management application featuring optimized SQL operations (DDL/DML), real-time budget forecasting, and automated categories.",
             trading: { rank: "HOLDING", stat1_label: "NAV DIVIDEND", stat1_val: "+12.5%", stat2_label: "RISK TOLERANCE", stat2_val: "LOW VOLATILITY" },
             anime: { rank: "A-RANK QUEST", stat1_label: "EXPERIENCE REWARD", stat1_val: "+1,200 EXP", stat2_label: "THREAT LEVEL", stat2_val: "Low Hazard" },
-            image: "url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80')"
+            image: "url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80')",
+            repoUrl: "https://github.com/heyanuraj0805/Expense-Tracker-Application"
         },
         {
             id: "finosafe",
@@ -77,7 +80,8 @@ const PORTFOLIO_DATA = {
             desc: "Developed a secure, finance-focused workflow tracking application for budget planning, efficient ledger management, and risk minimization.",
             trading: { rank: "SECURED BOND", stat1_label: "ANNUAL COUPON", stat1_val: "8.50% FIXED", stat2_label: "LEVERAGE LIMIT", stat2_val: "1.25x Ratio" },
             anime: { rank: "A-RANK QUEST", stat1_label: "GUILD MERIT", stat1_val: "+20 Merits", stat2_label: "REPUTATION GAIN", stat2_val: "Parbhani Alliance" },
-            image: "url('https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=500&q=80')"
+            image: "url('https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=500&q=80')",
+            repoUrl: "https://github.com/heyanuraj0805/FinoSafe"
         }
     ],
     experience: [
@@ -144,12 +148,13 @@ const PORTFOLIO_DATA = {
             "nav-projects": "Active Positions",
             "nav-experience": "Trade History",
             "nav-contact": "Place Order",
+            "nav-resume-text": "Download Resume",
             "hero-badge-text": "LIVE TRADING ACTIVE",
             "hero-greeting": "EXECUTE_INIT:",
             "hero-subtitle": "AI DEPLOYMENT & AUTOMATION QUANT",
             "hero-bio": "Undergraduate B.Tech CSE student (Graduating 2027). Specializing in AI-driven workflows, augmented reality, embedded systems, and robust full-stack automations. Building high-performance software at the intersection of intelligence and efficiency.",
             "hero-primary-text": "View Assets",
-            "hero-secondary-text": "Place Contract",
+            "hero-secondary-text": "Download Resume",
             "visual-panel-title": "PORTFOLIO_LIVE_FEED",
             "visual-panel-status": "ONLINE",
             "skills-tag": "ANALYSIS",
@@ -179,12 +184,13 @@ const PORTFOLIO_DATA = {
             "nav-projects": "S-Rank Quests",
             "nav-experience": "Chronicles",
             "nav-contact": "Summon Guild",
+            "nav-resume-text": "Obtain Grimoire",
             "hero-badge-text": "GUILD CAMPAIGN ACTIVE",
             "hero-greeting": "SPELL_CAST:",
             "hero-subtitle": "S-RANK FULL-STACK SORCERER",
             "hero-bio": "A level 21 wizard specializing in automation mechanics, computer vision illusions, and embedded magical devices. Leveling up daily by forging high-performance systems and defeating bugs across modern digital realms.",
             "hero-primary-text": "Quest Board",
-            "hero-secondary-text": "Summon Anuraj",
+            "hero-secondary-text": "Obtain Grimoire",
             "visual-panel-title": "MANA_GENERATION_SIGIL",
             "visual-panel-status": "CHARGED",
             "skills-tag": "GRIMOIRE",
@@ -463,7 +469,7 @@ function renderThemeDependentUI() {
             let subListHtml = '';
             list.forEach(skill => {
                 subListHtml += `
-                    <div class="skill-bar-item">
+                    <div class="skill-bar-item" onclick="triggerSkillNodeClick('${skill.name}', 'Asset Allocation', ${skill.value})" style="cursor: pointer;">
                         <div class="skill-name-row">
                             <span class="skill-name">${skill.name}</span>
                             <span class="skill-perf-val">${skill.value}% Holding</span>
@@ -493,7 +499,7 @@ function renderThemeDependentUI() {
             let subListHtml = '';
             list.forEach(skill => {
                 subListHtml += `
-                    <div class="skill-tree-node">
+                    <div class="skill-tree-node" onclick="triggerSkillNodeClick('${skill.name}', '${skill.nodeName}', ${skill.value})">
                         <span class="node-icon">✨</span>
                         <div class="node-info">
                             <div class="node-title">${skill.nodeName} (${skill.name})</div>
@@ -531,6 +537,8 @@ function renderThemeDependentUI() {
         const themeStats = currentTheme === 'trading' ? proj.trading : proj.anime;
         const badges = proj.techs.map(t => `<span class="tech-badge">${t}</span>`).join('');
         
+        const btnText = currentTheme === 'trading' ? 'ACCESS LIQUIDITY CODE' : 'RAID QUEST REPO';
+        
         projHtml += `
             <div class="project-card">
                 <div class="project-card-image">
@@ -543,7 +551,13 @@ function renderThemeDependentUI() {
                     <div class="project-tech-list">
                         ${badges}
                     </div>
-                    <div class="project-stats-block">
+                    
+                    <a href="${proj.repoUrl}" target="_blank" class="btn btn-secondary project-repo-link" style="margin-top: 1rem; width: 100%; font-size: 0.75rem; padding: 0.6rem 1rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <i data-lucide="${currentTheme === 'trading' ? 'code' : 'swords'}" style="width: 14px; height: 14px;"></i>
+                        <span>${btnText}</span>
+                    </a>
+
+                    <div class="project-stats-block" style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.25rem;">
                         <div class="proj-stat">
                             <span class="proj-label">${themeStats.stat1_label}</span>
                             <span class="proj-val positive">${themeStats.stat1_val}</span>
@@ -1082,5 +1096,90 @@ styleTag.textContent = `
         opacity: 1;
         transform: translateY(0);
     }
+    @keyframes form-success-reveal {
+        from { transform: translate(-50%, -40%) scale(0.9); opacity: 0; }
+        to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
 `;
 document.head.appendChild(styleTag);
+
+// 9. ACTIVE SKILL DETAILED POPUPS
+const SKILL_EXPLANATIONS = {
+    "Python": "Anuraj's primary language for AI workflow automations, custom PEFT fine-tuning, and robust backends (SafeHer).",
+    "Java": "Leveraged for enterprise object-oriented design and data structures built through Apna College masteries.",
+    "C++": "Utilized for embedded firmware register controls, FPGA boards, and real-time kernel synchronizations.",
+    "SQL & DBMS": "Applied to construct transaction tables, budgeting forecasting layers, and optimize secure DB tables.",
+    "JavaScript / React": "Powers modern user interfaces, device camera integrations, and glassmorphic responsive designs.",
+    "HTML / CSS": "Used to craft sleek, responsive components, glowing typography, and high-performance animations.",
+    "Python Flask": "Deploys lightweight REST endpoints, microservice routing, and rapid API bridges.",
+    "PySide6 (Desktop)": "Used to craft multi-threaded cross-platform desktop graphical apps and budgeting suites.",
+    "PEFT Library (AI)": "Deployed for Parameter-Efficient LLM alignments and customized LoRA matrix injections.",
+    "Git / GitHub": "Supports standard repository branching, automated pipelines, and continuous deployment logs.",
+    "AI Image/Video Gen": "Controls generative media diffusion parameters, weights, and automated graphic synthesis.",
+    "Augmented Reality (AR)": "Deploys computer vision camera grids for accurate scale measurements and visualizations.",
+    "Embedded Systems & IoT": "Forges secure bridges between physical sensors, actuators, and cloud platforms.",
+    "RTOS & DBMS": "Optimizes task preemptions, mutex locks, and guarantees low-latency response times."
+};
+
+function triggerSkillNodeClick(skillName, displayName, ratingValue) {
+    playClickGameSynth();
+    
+    // Spawn floating energy particles
+    for (let i = 0; i < 8; i++) {
+        const floatBubble = document.createElement('div');
+        floatBubble.className = 'click-particle';
+        const randomX = (Math.random() - 0.5) * 150;
+        const randomY = (Math.random() - 0.5) * 150;
+        floatBubble.style.setProperty('--fly-x', `${randomX}px`);
+        floatBubble.style.left = `${window.innerWidth / 2 + randomX}px`;
+        floatBubble.style.top = `${window.innerHeight / 2 + randomY}px`;
+        floatBubble.textContent = currentTheme === 'trading' ? '▲' : '✨';
+        floatBubble.style.color = currentTheme === 'trading' ? '#00ff66' : '#ff007f';
+        document.body.appendChild(floatBubble);
+        setTimeout(() => floatBubble.remove(), 800);
+    }
+
+    const explanation = SKILL_EXPLANATIONS[skillName] || "Highly proficient implementation across active systems and frameworks.";
+    
+    // Create immersive modal
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--bg-secondary);
+        border: 2px solid var(--accent);
+        border-radius: var(--border-radius-lg);
+        padding: 2.5rem;
+        z-index: 10005;
+        text-align: center;
+        max-width: 450px;
+        width: 90%;
+        box-shadow: var(--neon-glow), 0 10px 40px rgba(0,0,0,0.8);
+        backdrop-filter: blur(15px);
+        animation: form-success-reveal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    `;
+    
+    const titleText = currentTheme === 'trading' 
+        ? `QUANT ASSET: ${skillName.toUpperCase()} 📊` 
+        : `MYSTIC SPELL: ${displayName.toUpperCase()} 🌟`;
+        
+    const bodyText = currentTheme === 'trading'
+        ? `Liquidity Allocation: <strong>${ratingValue}% Holding</strong>.<br><br>${explanation}`
+        : `Grimoire Rank: <strong>Level ${ratingValue} Master</strong>.<br><br>${explanation}`;
+        
+    overlay.innerHTML = `
+        <h2 style="font-family: var(--font-display); color: var(--accent); margin-bottom: 1.25rem; font-size: 1.35rem; text-transform: uppercase;">${titleText}</h2>
+        <p style="color: var(--text-primary); line-height: 1.6; margin-bottom: 2rem; font-family: var(--font-main);">${bodyText}</p>
+        <button class="btn btn-primary" id="skill-modal-close-btn" style="padding: 0.6rem 1.5rem; font-size: 0.75rem;">Close Analysis</button>
+    `;
+    
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    
+    document.getElementById('skill-modal-close-btn').addEventListener('click', () => {
+        overlay.remove();
+        document.body.style.overflow = 'auto';
+    });
+}
